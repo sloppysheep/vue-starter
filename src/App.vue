@@ -4,7 +4,7 @@
 
         <div v-if="authenticatedUsername">
             <logout-form :username="authenticatedUsername" @logout="logMeOut()" button-label="dupa"></logout-form>
-            <meeting-page></meeting-page>
+            <meeting-page :username="authenticatedUsername"></meeting-page>
         </div>
 
         <div v-else>

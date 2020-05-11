@@ -1,9 +1,16 @@
 <template>
-    <div>
-       <h2>Zajęcia</h2>
-       <new-meeting-form @added="addNewMeeting($event)"></new-meeting-form>
-       <meetings-list :meetings="meetings"></meetings-list>
-    </div>
+<div>
+	<new-meeting-form @added="addNewMeeting($event)"></new-meeting-form>
+	<div v-if="meetings.length !==0">
+		<h3>Zaplanowane zajęcia ({{meetings.length}})</h3>
+		<meetings-list :meetings="meetings"></meetings-list>
+	</div>
+	<div v-else>
+		<p>Brak zaplanowanych spotkań</p>
+	</div>
+
+
+</div>
 </template>
 
 <script>
@@ -11,6 +18,7 @@ import NewMeetingForm from "./NewMeetingForm";
 import MeetingsList from "./MeetingsList";
 
 export default {
+  props: ['username'],
   components: {NewMeetingForm, MeetingsList},
   data() {
       return {
