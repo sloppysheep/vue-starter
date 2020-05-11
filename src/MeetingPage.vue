@@ -3,7 +3,7 @@
 	<new-meeting-form @added="addNewMeeting($event)"></new-meeting-form>
 	<div v-if="meetings.length !==0">
 		<h3>Zaplanowane zajęcia ({{meetings.length}})</h3>
-		<meetings-list :meetings="meetings"></meetings-list>
+		<meetings-list :meetings="meetings" :username="username"></meetings-list>
 	</div>
 	<div v-else>
 		<p>Brak zaplanowanych spotkań</p>
@@ -28,7 +28,11 @@ export default {
   methods: {
       addNewMeeting(meeting) {
           this.meetings.push(meeting);
+      },
+      removeMeeting(meeting) {
+    	  this.meetings = this.meetings.filter(item => item !== meeting)
       }
+      
   }
 }
 </script>
