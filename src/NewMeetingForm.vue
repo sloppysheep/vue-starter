@@ -5,7 +5,7 @@
             <input type="text" v-model="newMeeting.name">
             <label>Opis</label>
             <textarea v-model="newMeeting.description"></textarea>
-            <button>Dodaj</button>
+            <button >Dodaj</button>
         </form>
 </template>
 
@@ -19,7 +19,8 @@ export default {
   methods: {
       addNewMeeting() {
         this.$emit('added', this.newMeeting);
-        this.newMeeting = {};
+    	this.newMeeting = {};
+         
     }
   }
 }
