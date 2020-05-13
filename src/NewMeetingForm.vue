@@ -5,8 +5,8 @@
             <input type="text" v-model="newMeeting.name">
             <label>Opis</label>
             <textarea v-model="newMeeting.description"></textarea>
-            <button >Dodaj</button>
-            <p>{{error}}</p>
+            <button >Dodaj</button> 
+            <nobr style="color:rgb(246,70,90)" margin-left:10px> {{error}}</nobr>
         </form>
 </template>
 
