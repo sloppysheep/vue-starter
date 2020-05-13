@@ -18,7 +18,7 @@
     import "milligram";
     import LoginForm from "./LoginForm";
     import LogoutForm from "./LogoutForm";
-    import MeetingPage from "./MeetingPage";
+    import MeetingPage from "./meetings/MeetingPage";
     export default {
         components: {LoginForm, LogoutForm, MeetingPage},
         data() {

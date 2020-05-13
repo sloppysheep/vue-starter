@@ -1,26 +1,41 @@
 <template>
-    <form @submit.prevent="addNewMeeting()">
+<div>
+    <form v-if="formOn" @submit.prevent="addNewMeeting()">
             <h3>Dodaj nowe spotkanie</h3>
             <label>Nazwa</label>
             <input type="text" v-model="newMeeting.name">
             <label>Opis</label>
             <textarea v-model="newMeeting.description"></textarea>
-            <button>Dodaj</button>
-        </form>
+            <button>Dodaj</button> 
+            <nobr style="color:rgb(246,70,90)" margin-left:10px> {{error}}</nobr>
+    </form>
+    <button v-if="!formOn" @click="showForm()">Dodaj nowe spotkanie</button> 
+</div>
 </template>
 
 <script>
 export default {
   data() {
       return {
-          newMeeting: {}
+          newMeeting: {},
+          error: '',
+          formOn: false
       };
   },
+  
   methods: {
       addNewMeeting() {
-        this.$emit('added', this.newMeeting);
-        this.newMeeting = {};
-    }
+    	  if(this.newMeeting.name==null) {
+    		  this.error = 'Spotkanie musi mieć nazwę!';
+    	  }
+    	  else {
+    	        this.$emit('added', this.newMeeting);
+    	    	this.newMeeting = {};
+    	    	this.error = '';
+    	    	this.formOn = false;
+    	  }    
+      },
+      showForm() {this.formOn = true;}
   }
 }
 </script>
